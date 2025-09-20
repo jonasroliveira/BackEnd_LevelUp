@@ -14,7 +14,7 @@ public class FreeToGameClient : IFreeToGameClient
         _http.BaseAddress ??= new Uri("https://www.freetogame.com/api/");
     }
 
-    public async Task<List<FreeToGameModel>> FilterGamesAsync(string? tag, string? platform)
+    public async Task<IEnumerable<FreeToGameModel>> FilterGamesAsync(string? tag, string? platform)
     {        
         var query = new List<string>();
         if (!string.IsNullOrWhiteSpace(tag))

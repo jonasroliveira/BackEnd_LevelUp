@@ -5,6 +5,7 @@ using Moq;
 using Moq.Protected;
 using Newtonsoft.Json;
 using Xunit;
+using System.Linq;
 
 namespace BackEnd_LevelUp.Tests.Services;
 
@@ -51,9 +52,10 @@ public class FreeToGameClientTest
         var result = await client.FilterGamesAsync("Action", "PC");
 
         Assert.NotNull(result);
-        Assert.Equal(2, result.Count);
-        Assert.Equal("Game1", result[0].Title);
-        Assert.Equal("Game2", result[1].Title);
+        var resultList = result.ToList();
+        Assert.Equal(2, resultList.Count);
+        Assert.Equal("Game1", resultList[0].Title);
+        Assert.Equal("Game2", resultList[1].Title);
     }
 
     [Fact]

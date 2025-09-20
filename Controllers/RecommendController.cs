@@ -46,7 +46,7 @@ public class RecommendController : ControllerBase
         }
 
         var candidateSummaries = await _freeToGame.FilterGamesAsync(tag, platformParam);
-        if (candidateSummaries == null || candidateSummaries.Count == 0)
+        if (candidateSummaries == null || !candidateSummaries.Any())
             return NotFound(new { message = "No games found with the filters provided." });
 
         var validGames = candidateSummaries;
